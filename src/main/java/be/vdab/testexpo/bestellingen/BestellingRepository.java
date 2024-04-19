@@ -12,15 +12,13 @@ public class BestellingRepository {
         this.jdbcClient = jdbcClient;
     }
 
-    public long createBestelling(Bestelling bestelling) {
+    public void createBestelling(Bestelling bestelling) {
         var sql = """
                 insert into bestellingen(naam,ticketType)
                 values (?, ?)
                 """;
-        var keyHolder = new GeneratedKeyHolder();
         jdbcClient.sql(sql)
                 .params(bestelling.getNaam(), bestelling.getTicketType())
-                .update(keyHolder);
-        return keyHolder.getKey().longValue();
-    }
+                .update();
+            }
 }

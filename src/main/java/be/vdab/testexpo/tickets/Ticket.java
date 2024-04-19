@@ -9,7 +9,6 @@ public class Ticket {
         this.seniorDag = seniorDag;
     }
 
-
     public int getJuniorDag() {
         return juniorDag;
     }

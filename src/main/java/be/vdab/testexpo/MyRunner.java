@@ -15,7 +15,7 @@ public class MyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        bestellingService.create(new Bestelling(0,"Ahmet",1));
-        System.out.println("de Bestelling is gecreeerd! ");
+//        bestellingService.create(new Bestelling(0,"Ahmet",1));
+//        System.out.println("de Bestelling is gecreeerd! ");
     }
 }
