@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.*;
 
 @JdbcTest
 @Import(BestellingRepository.class)
-@Sql({"/bestellingen.sql"})
+@Sql("/bestellingen.sql")
 
-class BestellingRepositoryTest {
+public class BestellingRepositoryTest {
     private final BestellingRepository bestellingRepository;
     private final JdbcClient jdbcClient;
     private static final String BESTELLINGEN_TABLE = "bestellingen";
