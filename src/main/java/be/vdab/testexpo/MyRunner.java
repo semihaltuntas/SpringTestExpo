@@ -27,6 +27,13 @@ public class MyRunner implements CommandLineRunner {
 
         try{
             bestellingService.create(new Bestelling(0,naam,ticketType));
+            if (ticketType == 1) {
+                System.out.println("Bestelling succesvol toegevoegd voor Junior Dag!");
+            } else if (ticketType == 2) {
+                System.out.println("Bestelling succesvol toegevoegd voor Senior Dag!");
+            } else if (ticketType == 3) {
+                System.out.println("Bestelling succesvol toegevoegd voor beide dagen!");
+            }
         }catch (OnvoldoendeTicketsBeschikbaar ex){
             System.err.println(ex.getMessage());
         }
