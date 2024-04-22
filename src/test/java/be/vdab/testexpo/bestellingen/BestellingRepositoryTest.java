@@ -22,11 +22,13 @@ public class BestellingRepositoryTest {
         this.bestellingRepository = bestellingRepository;
         this.jdbcClient = jdbcClient;
     }
+
     @Test
-    void createVoegtEenBestellingToe(){
-//        var id = bestellingRepository.createBestelling(new Bestelling(0,"frank",2));
-//        var aantalRecordsMetDeIdVanDeToegevoegdeBestelling = JdbcTestUtils.countRowsInTableWhere(
-//                jdbcClient, BESTELLINGEN_TABLE,"id ="+id);
-//        assertThat(aantalRecordsMetDeIdVanDeToegevoegdeBestelling).isOne();
+    void createVoegtEenBestellingToe() {
+        int vorigAantalBestellingen = JdbcTestUtils.countRowsInTable(jdbcClient, BESTELLINGEN_TABLE);
+
+        bestellingRepository.createBestelling(new Bestelling(0, "frank", 2));
+        var huidigAantalBestelllingen = JdbcTestUtils.countRowsInTable(jdbcClient, BESTELLINGEN_TABLE);
+        assertThat(huidigAantalBestelllingen).isEqualTo(vorigAantalBestellingen + 1);
     }
 }

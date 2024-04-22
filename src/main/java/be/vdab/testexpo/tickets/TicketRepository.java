@@ -1,10 +1,7 @@
 package be.vdab.testexpo.tickets;
 
-import be.vdab.testexpo.bestellingen.Bestelling;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public class TicketRepository {
@@ -24,34 +21,31 @@ public class TicketRepository {
                 .single();
     }
 
-    public void decreaseJuniorDagTickets(int juniorDagTickets) {
+    public void decreaseEenJuniorDagTickets() {
         var sql = """
                 update tickets
-                 set juniorDag = juniordag - ?
+                 set juniorDag = juniordag - 1
                 """;
         jdbcClient.sql(sql)
-                .param(juniorDagTickets)
                 .update();
     }
 
-    public void decreaseSeniorDagTickets(int seniorDagTickets) {
+    public void decreaseSeniorDagTickets() {
         var sql = """
                 update tickets
-                 set seniorDag = seniordag - ?
+                 set seniorDag = seniordag - 1
                 """;
         jdbcClient.sql(sql)
-                .param(seniorDagTickets)
                 .update();
     }
 
-    public void decreaseJuniorDagEnSeniorDagTickets(int juniorTickets, int seniorTickets) {
+    public void decreaseJuniorDagEnSeniorDagTickets() {
         var sql = """
                 update tickets
-                 set juniorDag = juniordag - ?,
-                 seniorDag = seniordag - ?
+                 set juniorDag = juniordag - 1,
+                 seniorDag = seniordag - 1
                 """;
         jdbcClient.sql(sql)
-                .params(juniorTickets, seniorTickets)
                 .update();
     }
 }

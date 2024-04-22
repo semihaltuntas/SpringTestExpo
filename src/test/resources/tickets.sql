@@ -1,1 +1,0 @@
-insert into tickets (juniorDag, seniorDag) values (100,200);

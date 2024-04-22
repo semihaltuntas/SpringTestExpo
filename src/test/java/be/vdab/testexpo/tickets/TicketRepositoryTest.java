@@ -1,9 +1,6 @@
 package be.vdab.testexpo.tickets;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -62,28 +59,28 @@ class TicketRepositoryTest {
     @Test
     void decreaseJuniorDagTickets() {
         var juniorDagAantal = ticketRepository.getBeschikbaarTickets().getJuniorDag();
-        ticketRepository.decreaseJuniorDagTickets(5);
+        ticketRepository.decreaseEenJuniorDagTickets();
         var juniorDagAantalNaOproep = ticketRepository.getBeschikbaarTickets().getJuniorDag();
-        assertThat(juniorDagAantal - 5).isEqualTo(juniorDagAantalNaOproep);
+        assertThat(juniorDagAantal - 1).isEqualTo(juniorDagAantalNaOproep);
     }
 
     @Test
     void decreaseSeniorDagTickets() {
         var seniorDagAantal = ticketRepository.getBeschikbaarTickets().getSeniorDag();
-        ticketRepository.decreaseSeniorDagTickets(10);
+        ticketRepository.decreaseSeniorDagTickets();
         var juniorDagAantalNaOproep = ticketRepository.getBeschikbaarTickets().getSeniorDag();
-        assertThat(seniorDagAantal - 10).isEqualTo(juniorDagAantalNaOproep);
+        assertThat(seniorDagAantal - 1).isEqualTo(juniorDagAantalNaOproep);
     }
 
     @Test
     void decreaseJuniorDagEnSeniorDagTickets() {
         int juniorDagAantal = ticketRepository.getBeschikbaarTickets().getJuniorDag();
         int seniorDagAantal = ticketRepository.getBeschikbaarTickets().getSeniorDag();
-        ticketRepository.decreaseJuniorDagEnSeniorDagTickets(5,10);
+        ticketRepository.decreaseJuniorDagEnSeniorDagTickets();
 
         int juniorDagAantalNaOproep = ticketRepository.getBeschikbaarTickets().getJuniorDag();
         int seniorDagAantalNaOproep = ticketRepository.getBeschikbaarTickets().getSeniorDag();
-        assertThat(juniorDagAantal - 5).isEqualTo(juniorDagAantalNaOproep);
-        assertThat(seniorDagAantal - 10).isEqualTo(seniorDagAantalNaOproep);
+        assertThat(juniorDagAantal - 1).isEqualTo(juniorDagAantalNaOproep);
+        assertThat(seniorDagAantal - 1).isEqualTo(seniorDagAantalNaOproep);
     }
 }

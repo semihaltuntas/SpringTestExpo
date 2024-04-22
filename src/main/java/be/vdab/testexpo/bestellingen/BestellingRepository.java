@@ -1,7 +1,6 @@
 package be.vdab.testexpo.bestellingen;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -20,5 +19,5 @@ public class BestellingRepository {
         jdbcClient.sql(sql)
                 .params(bestelling.getNaam(), bestelling.getTicketType())
                 .update();
-            }
+    }
 }
